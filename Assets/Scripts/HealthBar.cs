@@ -16,5 +16,6 @@ public class HealthBar : MonoBehaviour
     void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         bar.fillAmount = (float)currentHealth / maxHealth;
+        Debug.Log("Healthbar update recieved");
     }
 }
