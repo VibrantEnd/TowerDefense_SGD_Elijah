@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public event System.Action<int, int> OnHealthChanged;
+
     [SerializeField] private int maxHealth = 20;
     private int currentHealth;
 
@@ -23,6 +25,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = Mathf.Max(currentHealth-damageAmount, 0);
             Debug.Log($"Current Health: { currentHealth}");
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
         } 
         
     }

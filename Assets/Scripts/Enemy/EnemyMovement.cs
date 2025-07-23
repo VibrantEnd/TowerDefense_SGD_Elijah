@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     [SerializeField] private Transform endPoint;
     [SerializeField] private string animatorParam_IsWalking;
+    [SerializeField] private int damage;
 
     
     private void Awake()
@@ -26,10 +27,16 @@ public class EnemyMovement : MonoBehaviour
         {
             if (agent.hasPath || agent.pathStatus == NavMeshPathStatus.PathComplete)
             {
-                animator.SetBool(animatorParam_IsWalking, false);
+                ReachedEnd();
             }
             
         }
         
+    }
+    private void ReachedEnd()
+    {
+        animator.SetBool(animatorParam_IsWalking, false);
+        GameManager.Instance.playerHealth.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }
