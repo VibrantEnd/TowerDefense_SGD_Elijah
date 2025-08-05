@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     public float FireCoolDown = 1.0f;
 
     protected float currentFireCooldown = 0.0f;
     protected List<Enemy> enemiesInRange= new List<Enemy>();
-    private void Update()
+
+    
+    protected virtual void Update()
     {
         currentFireCooldown -= Time.deltaTime;
         Enemy closestEnemy = GetTargetEnemy();

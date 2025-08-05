@@ -55,13 +55,14 @@ public class TowerPlaceManager : MonoBehaviour
     {
         if (currentTowerToSpawn != towerPrefab)
         {
-            isPlacingTower = true;
-            currentTowerToSpawn = towerPrefab;
-            towerPreview = Instantiate(currentTowerToSpawn);
-            if(towerPreview != null)
+            if (towerPreview != null)
             {
                 Destroy(towerPreview);
             }
+            isPlacingTower = true;
+            currentTowerToSpawn = towerPrefab;
+            towerPreview = Instantiate(currentTowerToSpawn);
+            
         }
         
     }
