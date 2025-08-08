@@ -62,7 +62,8 @@ public class TowerPlaceManager : MonoBehaviour
             isPlacingTower = true;
             currentTowerToSpawn = towerPrefab;
             towerPreview = Instantiate(currentTowerToSpawn);
-            
+            towerPreview.GetComponent<Tower>().IsBeingPlaced = true;
+
         }
         
     }
@@ -74,6 +75,7 @@ public class TowerPlaceManager : MonoBehaviour
             Instantiate(currentTowerToSpawn, towerPlacementPosition, Quaternion.identity);
             Destroy(towerPreview);
             currentTowerToSpawn = null;
+            towerPreview.GetComponent<Tower>().IsBeingPlaced = false;
         }
         
     }

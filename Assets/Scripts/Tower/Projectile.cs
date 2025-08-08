@@ -36,45 +36,44 @@ public class Projectile : MonoBehaviour
             transform.rotation = finalRotation;
         }
    }
+   private void Explosion()
+   {
+        Instantiate(explosivePrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 
    public void OnTriggerEnter(Collider other)
    {
-       if(other.transform == target && !explosive)
+       if (other.gameObject.layer == PathLayer && explosive)
        {
-           Enemy enemy = other.GetComponent<Enemy>();
-           if(enemy != null )
-           {
-                enemy.TakeDamage(damage);
-               
-           }
+            Explosion();
        }
-        if (other.transform == target && explosive)
+       else if (other.gameObject.layer == PathLayer && sticky)
+       {
+           stuck = true;
+       }
+       if (other.transform == target && !explosive)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                Instantiate(explosivePrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                enemy.TakeDamage(damage);
+
             }
         }
-        if(other.gameObject.layer == PathLayer)
-        {
-            if (sticky)
-            {
-                stuck = true;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            
-        }
-        
+       if (other.transform == target && explosive)
+       {
+           Enemy enemy = other.GetComponent<Enemy>();
+           if (enemy != null)
+           {
+                Explosion();
+           }
+       }
    }
     public void SetTarget(Transform other) 
     {
         target = other;
-        finalDirection = (target.position - transform.position).normalized;
+        finalDirection = ((target.position + new Vector3(0,.5f,0)) - transform.position).normalized;
         finalRotation = Quaternion.LookRotation(finalDirection);
     }
 

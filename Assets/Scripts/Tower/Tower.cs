@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     public float FireCoolDown = 1.0f;
+    public bool IsBeingPlaced = false;
 
     protected float currentFireCooldown = 0.0f;
     protected List<Enemy> enemiesInRange= new List<Enemy>();
@@ -13,7 +14,7 @@ public abstract class Tower : MonoBehaviour
     {
         currentFireCooldown -= Time.deltaTime;
         Enemy closestEnemy = GetTargetEnemy();
-        if (closestEnemy != null && currentFireCooldown <= 0)
+        if (closestEnemy != null && currentFireCooldown <= 0 && !IsBeingPlaced)
         {
             FireAt(closestEnemy);
             currentFireCooldown = FireCoolDown;

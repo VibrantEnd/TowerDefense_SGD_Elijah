@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: BaseEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114,6 +114,9 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   animatorParam_IsWalking: IsWalking
   damage: 5
+  speed: 2
+  maxHealth: 15
+  currentHealth: 0
 --- !u!95 &4684890590370946218
 Animator:
   serializedVersion: 7

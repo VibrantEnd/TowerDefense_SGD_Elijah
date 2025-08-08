@@ -4,12 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Explosion : MonoBehaviour
 {
-    Projectile projectile;
-    int projectileDamage;
+    int projectileDamage = 10;
     private void Awake()
     {
-        projectile = GetComponentInParent<Projectile>();
-        projectileDamage = projectile.damage;
         StartCoroutine(LifeTime());
     }
     IEnumerator LifeTime()

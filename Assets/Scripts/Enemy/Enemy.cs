@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
