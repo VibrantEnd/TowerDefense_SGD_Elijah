@@ -4,8 +4,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Explosion : MonoBehaviour
 {
+    Projectile projectile;
+    int projectileDamage;
     private void Awake()
     {
+        projectile = GetComponentInParent<Projectile>();
+        projectileDamage = projectile.damage;
         StartCoroutine(LifeTime());
     }
     IEnumerator LifeTime()
@@ -18,7 +22,7 @@ public class Explosion : MonoBehaviour
     Enemy enemy = other.GetComponent<Enemy>();
     if (enemy != null)
         {
-            Destroy(enemy.gameObject);
+            enemy.TakeDamage(projectileDamage);
         }
     }
 }

@@ -45,7 +45,7 @@ public abstract class Tower : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if(enemy!=null && enemiesInRange.Contains(enemy))
         {
-
+            enemiesInRange.Remove(enemy);
         }
     }
 }
