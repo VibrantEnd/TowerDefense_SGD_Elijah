@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SceneManager : MonoBehaviour
 {
@@ -31,6 +32,14 @@ public class SceneManager : MonoBehaviour
     public void CloseSettings()
     {
         SettingsScreen.enabled = false;
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
+    public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title Screen", LoadSceneMode.Single);
     }
 
     void Update()
