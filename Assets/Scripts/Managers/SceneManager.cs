@@ -4,18 +4,17 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEditor;
 
 public class SceneManager : MonoBehaviour
 {
     public Canvas canvas;
-    public Canvas SettingsScreen;
-    
+    public GameObject SettingsObject;
 
     public Slider VolumeSlider;
     public static float Volume;
     void Start()
     {
-        SettingsScreen.enabled = false;
         SetVolume(Volume);
     }
     public void SetVolume(float value)
@@ -27,15 +26,19 @@ public class SceneManager : MonoBehaviour
     }
     public void OpenSettings()
     {
-        SettingsScreen.enabled = true;
+        SettingsObject.SetActive(true);
     }
     public void CloseSettings()
     {
-        SettingsScreen.enabled = false;
+        SettingsObject.SetActive(false);
     }
     public void Exit()
     {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
     public void Restart()
     {

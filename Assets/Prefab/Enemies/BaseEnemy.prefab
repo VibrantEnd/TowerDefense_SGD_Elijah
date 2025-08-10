@@ -61,9 +61,6 @@ PrefabInstance:
       addedObject: {fileID: 7406802446023321864}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5329348452550030576}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4684890590370946218}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
       insertIndex: -1
@@ -71,6 +68,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3596587401526929902}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785850651579758627}
   m_SourcePrefab: {fileID: 100100000, guid: 630ec88ec0a0d5546833346a317e0e88, type: 3}
 --- !u!1 &2513355548397797973 stripped
 GameObject:
@@ -99,24 +99,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5329348452550030576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2513355548397797973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eb3b52e7d3af15478b934f2bc8beb57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endPoint: {fileID: 0}
-  animatorParam_IsWalking: IsWalking
-  damage: 5
-  speed: 2
-  maxHealth: 15
-  currentHealth: 0
 --- !u!95 &4684890590370946218
 Animator:
   serializedVersion: 7
@@ -189,3 +171,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1785850651579758627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513355548397797973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12dd75d47fa7034c837430ddb5e1d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPoint: {fileID: 0}
+  animatorParam_IsWalking: IsWalking
+  damage: 5
+  speed: 2
+  maxHealth: 10
+  currentHealth: 0
+  currencyDropped: 10
+  agent: {fileID: 7406802446023321864}

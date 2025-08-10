@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +9,7 @@ public class TowerPlaceManager : MonoBehaviour
     public LayerMask TileLayer;
     public InputAction PlaceTowerAction;
 
+    [SerializeField] private GameObject InsufficientFunds;
     [SerializeField] private float towerPlacementHeightOffset = .2f;
     private GameObject currentTowerToSpawn;
     private GameObject towerPreview;
@@ -51,9 +54,19 @@ public class TowerPlaceManager : MonoBehaviour
         PlaceTowerAction.Disable();
         PlaceTowerAction.performed -= OnPlaceTower;
     }
+    IEnumerator IFundsCountDown()
+    {
+        yield return new WaitForSeconds(.5f);
+        InsufficientFunds.SetActive(false);
+    }
     public void StartPlacingTower(GameObject towerPrefab)
     {
-        if (currentTowerToSpawn != towerPrefab)
+        if(towerPrefab.GetComponent<Tower>().Cost > GameManager.Instance.Money)
+        {
+            InsufficientFunds.SetActive(true);
+            StartCoroutine(IFundsCountDown());
+        }
+        if (currentTowerToSpawn != towerPrefab && towerPrefab.GetComponent<Tower>().Cost <= GameManager.Instance.Money)
         {
             if (towerPreview != null)
             {
@@ -76,6 +89,7 @@ public class TowerPlaceManager : MonoBehaviour
             Destroy(towerPreview);
             currentTowerToSpawn = null;
             towerPreview.GetComponent<Tower>().IsBeingPlaced = false;
+            towerPreview.GetComponent<Tower>().Buy();
         }
         
     }

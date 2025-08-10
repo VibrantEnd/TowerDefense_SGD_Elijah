@@ -1,27 +1,25 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     private Animator animator;
-    private NavMeshAgent agent;
     [SerializeField] private Transform endPoint;
     [SerializeField] private string animatorParam_IsWalking;
 
     [SerializeField] private int damage;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+    [SerializeField] private int currencyDropped;
 
     
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
-    void Start()
+    protected virtual void Start()
     {
         animator.SetBool(animatorParam_IsWalking, true);
     }
@@ -29,29 +27,19 @@ public class Enemy : MonoBehaviour
     public void Initialize(Transform inputEndPoint)
     {
         endPoint = inputEndPoint;
-        agent.SetDestination(endPoint.position);
+        SetDestination(endPoint);
     }
+    protected abstract void SetDestination(Transform endPoint);
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            GameManager.Instance.AddScore(currencyDropped);
             Destroy(gameObject);
         }
     }
-    void Update()
-    {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-        {
-            if (agent.hasPath || agent.pathStatus == NavMeshPathStatus.PathComplete)
-            {
-                ReachedEnd();
-            }
-            
-        }
-        
-    }
-    private void ReachedEnd()
+    protected void ReachedEnd()
     {
         animator.SetBool(animatorParam_IsWalking, false);
         GameManager.Instance.playerHealth.TakeDamage(damage);

@@ -6,10 +6,16 @@ public abstract class Tower : MonoBehaviour
     public float FireCoolDown = 1.0f;
     public bool IsBeingPlaced = false;
 
+    public int Cost;
+
     protected float currentFireCooldown = 0.0f;
     protected List<Enemy> enemiesInRange= new List<Enemy>();
 
-    
+
+    public void Buy()
+    {
+        GameManager.Instance.AddScore(-Cost);
+    }
     protected virtual void Update()
     {
         currentFireCooldown -= Time.deltaTime;
