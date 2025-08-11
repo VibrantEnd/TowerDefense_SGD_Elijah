@@ -8,7 +8,6 @@ using UnityEditor;
 
 public class SceneManager : MonoBehaviour
 {
-    public Canvas canvas;
     public GameObject SettingsObject;
 
     public Slider VolumeSlider;
@@ -43,10 +42,5 @@ public class SceneManager : MonoBehaviour
     public void Restart()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title Screen", LoadSceneMode.Single);
-    }
-
-    void Update()
-    {
-        
     }
 }

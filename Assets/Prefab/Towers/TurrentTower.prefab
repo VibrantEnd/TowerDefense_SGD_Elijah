@@ -173,5 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireCoolDown: 0.2
   IsBeingPlaced: 0
+  Cost: 20
   projectilePrefab: {fileID: 3139936077184673762, guid: 89c7aa09e846cd8438db6de4c558d5da, type: 3}
   offset: {x: 0, y: 1, z: 0}
