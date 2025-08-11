@@ -17,29 +17,29 @@ public struct WaveData
 {
     public float TimeBeforeWave;
     public List<SpawnData> EnemyData;
-
-
 }
 
 public class WaveManager : MonoBehaviour
 {
     public List<WaveData> LevelWaveData;
-    void Start()
-    {
-        StartLevel();
-    }
+    public WaveData myWave;
     public void StartLevel()
     {
         StartCoroutine (StartWave());
     }
     IEnumerator StartWave()
     {
-       foreach (WaveData currentWave in LevelWaveData)
-       foreach (SpawnData currentEnemyToSpawn in currentWave.EnemyData)
-       {
-           yield return new WaitForSeconds(currentEnemyToSpawn.TimeBeforeSpawn);
-           SpawnEnemy(currentEnemyToSpawn.EnemyToSpawn, currentEnemyToSpawn.SpawnPoint, currentEnemyToSpawn.EndPoint);
-       }
+        GameManager.Instance.SpawnStart();
+        foreach (WaveData currentWave in LevelWaveData)
+        {
+            yield return new WaitForSeconds(myWave.TimeBeforeWave);
+            foreach (SpawnData currentEnemyToSpawn in currentWave.EnemyData)
+            {
+                yield return new WaitForSeconds(currentEnemyToSpawn.TimeBeforeSpawn);
+                SpawnEnemy(currentEnemyToSpawn.EnemyToSpawn, currentEnemyToSpawn.SpawnPoint, currentEnemyToSpawn.EndPoint);
+            }
+        }
+            
     }
     public void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint, Transform endPoint)
     {

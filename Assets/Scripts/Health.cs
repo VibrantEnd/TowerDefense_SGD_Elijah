@@ -26,6 +26,10 @@ public class Health : MonoBehaviour
             currentHealth = Mathf.Max(currentHealth-damageAmount, 0);
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
+        if(currentHealth <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
         Debug.Log($"Current Health: {currentHealth}");
     }
 }
