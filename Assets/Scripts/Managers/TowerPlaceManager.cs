@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,12 +16,6 @@ public class TowerPlaceManager : MonoBehaviour
 
     [SerializeField] private bool isPlacingTower = false;
     private bool isTileSelected = false;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (isPlacingTower)

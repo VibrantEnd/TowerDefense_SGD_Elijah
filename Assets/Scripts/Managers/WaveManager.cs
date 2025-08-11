@@ -1,4 +1,4 @@
-using NUnit.Framework;
+
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
@@ -24,14 +24,6 @@ public struct WaveData
 public class WaveManager : MonoBehaviour
 {
     public List<WaveData> LevelWaveData;
-    //[SerializeField] private GameObject enemyPrefab;
-    //[SerializeField] private Transform spawnPoint;
-    //[SerializeField] private Transform endPoint;
-    //[SerializeField] private float timeBetweenSpawns = 5f;
-    //[SerializeField] private float timeBetweenWaves = 5f;
-
-    //[SerializeField] private int enemyCount = 5;
-    //[SerializeField] private int waveCount = 2;
     void Start()
     {
         StartLevel();

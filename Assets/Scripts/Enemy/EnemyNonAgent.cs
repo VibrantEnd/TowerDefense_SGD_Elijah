@@ -1,7 +1,5 @@
-using System.Net;
+
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyNonAgent : Enemy
 {

@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.SceneManagement;
-using System;
 using UnityEditor;
 
 public class SceneManager : MonoBehaviour
