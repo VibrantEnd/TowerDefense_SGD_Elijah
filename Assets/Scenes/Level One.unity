@@ -10056,6 +10056,7 @@ MonoBehaviour:
   Money: 0
   MoneyAmount: {fileID: 457823910}
   GameOverObject: {fileID: 479441891}
+  YouWinObject: {fileID: 5714089323285569814}
   SpawnButton: {fileID: 1044934248}
 --- !u!4 &2113875567
 Transform:
@@ -10441,6 +10442,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 849d32148bd4acf4ab9759601bf8c750, type: 3}
+--- !u!1 &5714089323285569814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2874013784018665547, guid: 849d32148bd4acf4ab9759601bf8c750, type: 3}
+  m_PrefabInstance: {fileID: 5714089323285569813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

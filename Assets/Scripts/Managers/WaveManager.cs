@@ -23,6 +23,8 @@ public class WaveManager : MonoBehaviour
 {
     public List<WaveData> LevelWaveData;
     public WaveData myWave;
+
+    public bool WaveOver;
     public void StartLevel()
     {
         StartCoroutine (StartWave());
@@ -37,8 +39,10 @@ public class WaveManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(currentEnemyToSpawn.TimeBeforeSpawn);
                 SpawnEnemy(currentEnemyToSpawn.EnemyToSpawn, currentEnemyToSpawn.SpawnPoint, currentEnemyToSpawn.EndPoint);
+                GameManager.Instance.AddScore(0);
             }
         }
+        WaveOver = true;
             
     }
     public void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint, Transform endPoint)

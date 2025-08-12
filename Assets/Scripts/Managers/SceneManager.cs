@@ -28,6 +28,18 @@ public class SceneManager : MonoBehaviour
     {
         SettingsObject.SetActive(false);
     }
+    public void Level1()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level One", LoadSceneMode.Single);
+    }
+    public void Level2()
+    {
+
+    }
+    public void Level3()
+    {
+
+    }
     public void Exit()
     {
 #if UNITY_EDITOR

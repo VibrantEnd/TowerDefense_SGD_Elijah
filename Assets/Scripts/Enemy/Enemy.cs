@@ -42,6 +42,8 @@ public abstract class Enemy : MonoBehaviour
     {
         animator.SetBool(animatorParam_IsWalking, false);
         GameManager.Instance.playerHealth.TakeDamage(damage);
+        GameManager.Instance.AddScore(0);
         Destroy(gameObject);
+
     }
 }
