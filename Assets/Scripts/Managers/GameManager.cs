@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public Health playerHealth;
     public int Money;
+    [SerializeField] private TMP_Text FinalMoney;
+
     [SerializeField] private TMP_Text MoneyAmount;
     [SerializeField] private GameObject GameOverObject;
     [SerializeField] private GameObject YouWinObject;
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         Money += currencyDrop;
         MoneyAmount.text = Money.ToString();
+        FinalMoney.text = Money.ToString();
     }
 
     

@@ -47,7 +47,7 @@ public abstract class Enemy : MonoBehaviour
     {
         Enemy[] all = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
         int enemyCount = all.Count();
-        if (waveManager.WaveOver = true && enemyCount <= 1)
+        if (waveManager.WaveOver == true && enemyCount <= 1)
         {
             GameManager.Instance.YouWin();
         }

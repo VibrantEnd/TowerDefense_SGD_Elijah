@@ -159,7 +159,7 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   animatorParam_IsWalking: IsWalking
   damage: 20
-  speed: 2
+  speed: 0.5
   maxHealth: 50
   currentHealth: 0
   currencyDropped: 0

@@ -34,11 +34,19 @@ public class SceneManager : MonoBehaviour
     }
     public void Level2()
     {
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level Two", LoadSceneMode.Single);
     }
     public void Level3()
     {
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level Three", LoadSceneMode.Single);
+    }
+    public void Level4()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level Four", LoadSceneMode.Single);
+    }
+    public void Level5()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level Five", LoadSceneMode.Single);
     }
     public void Exit()
     {

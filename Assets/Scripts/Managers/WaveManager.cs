@@ -32,19 +32,21 @@ public class WaveManager : MonoBehaviour
     IEnumerator StartWave()
     {
         GameManager.Instance.SpawnStart();
+        WaveOver = false;
         foreach (WaveData currentWave in LevelWaveData)
         {
             yield return new WaitForSeconds(myWave.TimeBeforeWave);
             foreach (SpawnData currentEnemyToSpawn in currentWave.EnemyData)
             {
+                
                 yield return new WaitForSeconds(currentEnemyToSpawn.TimeBeforeSpawn);
                 SpawnEnemy(currentEnemyToSpawn.EnemyToSpawn, currentEnemyToSpawn.SpawnPoint, currentEnemyToSpawn.EndPoint);
-                GameManager.Instance.AddScore(0);
             }
+            
         }
         WaveOver = true;
-            
     }
+
     public void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint, Transform endPoint)
     {
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
