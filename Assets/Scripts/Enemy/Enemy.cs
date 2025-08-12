@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -12,11 +13,13 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float currentHealth;
     [SerializeField] private int currencyDropped;
 
+    private WaveManager waveManager;
     
     private void Awake()
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+        waveManager = FindAnyObjectByType<WaveManager>();
     }
     protected virtual void Start()
     {
@@ -35,15 +38,27 @@ public abstract class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             GameManager.Instance.AddScore(currencyDropped);
+            
             Destroy(gameObject);
+            CheckEnemies();
+        }
+    }
+    private void CheckEnemies()
+    {
+        Enemy[] all = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        int enemyCount = all.Count();
+        if (waveManager.WaveOver = true && enemyCount <= 1)
+        {
+            GameManager.Instance.YouWin();
         }
     }
     protected void ReachedEnd()
     {
         animator.SetBool(animatorParam_IsWalking, false);
         GameManager.Instance.playerHealth.TakeDamage(damage);
-        GameManager.Instance.AddScore(0);
+        
         Destroy(gameObject);
+        CheckEnemies();
 
     }
 }

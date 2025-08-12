@@ -46,11 +46,6 @@ public class GameManager : MonoBehaviour
     {
         Money += currencyDrop;
         MoneyAmount.text = Money.ToString();
-        Enemy[] all = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        if(GetComponent<WaveManager>().WaveOver = true && all == null)
-        {
-            YouWin();
-        }
     }
 
     

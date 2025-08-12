@@ -24,7 +24,7 @@ public class WaveManager : MonoBehaviour
     public List<WaveData> LevelWaveData;
     public WaveData myWave;
 
-    public bool WaveOver;
+    public bool WaveOver = false;
     public void StartLevel()
     {
         StartCoroutine (StartWave());
